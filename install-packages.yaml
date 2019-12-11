@@ -1,0 +1,32 @@
+---
+- name: "Install required packages on Ubuntu"
+  hosts: all
+  become: yes
+  tasks:
+  - name: Disable SWAP since kubernetes can't work with swap enabled (1/2)
+    shell: 
+      swapoff -a
+  
+  - name: Disable SWAP in fstab since kubernetes can't work with swap enabled (2/2)
+    replace:
+      path: /etc/fstab
+      regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
+      replace: '# \1'
+
+  - name: "K8s and Containerd packages"
+    apt: 
+      update_cache: yes
+      pkg:
+        - unzip
+        - tar
+        - apt-transport-https
+        - btrfs-tools
+        - libseccomp2
+        - socat
+        - util-linux
+        - docker-ce 
+        - docker-ce-cli 
+        - containerd.io
+        - kubelet 
+        - kubeadm 
+        - kubectl

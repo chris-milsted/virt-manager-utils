@@ -1,0 +1,22 @@
+ansible -b -i inventory.ansible -m command -a "apt-get install ufw --yes" all
+ansible -b -i inventory.ansible -m command -a "ufw allow 22" all
+ansible -b -i inventory.ansible -m command -a "ufw --force enable" all
+
+ansible -b -i inventory.ansible -m command -a "ufw allow 6443" masters
+ansible -b -i inventory.ansible -m command -a "ufw allow 2379:2380/tcp" masters
+ansible -b -i inventory.ansible -m command -a "ufw allow 10250" masters
+ansible -b -i inventory.ansible -m command -a "ufw allow 10251" masters
+ansible -b -i inventory.ansible -m command -a "ufw allow 10252" masters
+
+ansible -b -i inventory.ansible -m command -a "ufw allow 10250" workers
+ansible -b -i inventory.ansible -m command -a "ufw allow 30000:32767/tcp" workers
+
+ansible -b -i inventory.ansible -m command -a "ufw allow 179" all
+
+
+ansible -b -i inventory.ansible -m ping all
+
+ansible -b -i inventory.ansible -m command -a "apt-get install curl apt-transport-https gnupg-agent ca-certificates software-properties-common -y" all
+
+
+
