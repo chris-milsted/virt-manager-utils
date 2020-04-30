@@ -3,6 +3,9 @@ ansible -b -i inventory.ansible -m command -a "ufw allow 22" all
 ansible -b -i inventory.ansible -m command -a "ufw --force enable" all
 
 ansible -b -i inventory.ansible -m command -a "ufw allow 6443" masters
+ansible -b -i inventory.ansible -m command -a "ufw allow 443" masters
+ansible -b -i inventory.ansible -m command -a "ufw allow 443" lb
+ansible -b -i inventory.ansible -m command -a "ufw allow 6443" lb
 ansible -b -i inventory.ansible -m command -a "ufw allow 2379:2380/tcp" masters
 ansible -b -i inventory.ansible -m command -a "ufw allow 10250" masters
 ansible -b -i inventory.ansible -m command -a "ufw allow 10251" masters
@@ -20,3 +23,4 @@ ansible -b -i inventory.ansible -m command -a "apt-get install curl apt-transpor
 
 
 
+echo "ubuntu        ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers.d/ubuntu
