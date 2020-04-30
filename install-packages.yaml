@@ -20,13 +20,19 @@
         - unzip
         - tar
         - apt-transport-https
-        - btrfs-tools
         - libseccomp2
         - socat
         - util-linux
         - docker-ce 
         - docker-ce-cli 
         - containerd.io
-        - kubelet 
-        - kubeadm 
+        - wget
+        - kubeadm
         - kubectl
+        - kubelet
+
+  - name: Upgrade all packages to the latest version
+    apt:
+      name: "*"
+      state: latest
+
