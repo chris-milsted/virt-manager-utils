@@ -1,0 +1,44 @@
+---
+- name: "copy kube binaries"
+  hosts: masters
+  become: yes
+  tasks:
+    - name: "Copy kube-apiserver"
+      copy:
+        src: /home/ubuntu/kube-apiserver
+        dest: /usr/local/bin/kube-apiserver
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: "Copy kube-controller-manager"
+      copy:
+        src: /home/ubuntu/kube-controller-manager
+        dest: /usr/local/bin/kube-controller-manager
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: "Copy kube-scheduler"
+      copy:
+        src: /home/ubuntu/kube-scheduler
+        dest: /usr/local/bin/kube-scheduler
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: "Copy kubectl"
+      copy:
+        src: /home/ubuntu/kubectl
+        dest: /usr/local/bin/kubectl
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0755'
+
+
+#  chmod +x kube-apiserver kube-controller-manager kube-scheduler kubectl
+#  sudo mv kube-apiserver kube-controller-manager kube-scheduler kubectl /usr/local/bin/

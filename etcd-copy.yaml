@@ -1,0 +1,31 @@
+---
+- name: "copy ca certs"
+  hosts: masters
+  become: yes
+  tasks:
+    - name: "Copy etcd ca.crt"
+      copy:
+        src: /home/ubuntu/ca.crt
+        dest: /etc/etcd/ca.crt
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0600'
+
+    - name: "Copy etcd etcd-server.key"
+      copy:
+        src: /home/ubuntu/etcd-server.key
+        dest: /etc/etcd/etcd-server.key
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0600'
+
+    - name: "Copy etcd etcd-server.crt"
+      copy:
+        src: /home/ubuntu/etcd-server.crt
+        dest: /etc/etcd/etcd-server.crt
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0600'

@@ -1,0 +1,36 @@
+---
+- name: "etcd-service-1"
+  hosts: master-1.local.com
+  become: yes
+  tasks:
+    - name: "Copy etcd.service.1"
+      copy:
+        src: /home/chris/Documents/kubeadm/kthw/etcd.service.master.1
+        dest: /etc/systemd/system/etcd.service
+        owner: root
+        group: root
+        mode: '0644'
+
+- name: "etcd-service-2"
+  hosts: master-2.local.com
+  become: yes
+  tasks:
+    - name: "Copy etcd.service.2"
+      copy:
+        src: /home/chris/Documents/kubeadm/kthw/etcd.service.master.2
+        dest: /etc/systemd/system/etcd.service
+        owner: root
+        group: root
+        mode: '0644'
+
+- name: "etcd-service-3"
+  hosts: master-3.local.com
+  become: yes
+  tasks:
+    - name: "Copy etcd.service.3"
+      copy:
+        src: /home/chris/Documents/kubeadm/kthw/etcd.service.master.3
+        dest: /etc/systemd/system/etcd.service
+        owner: root
+        group: root
+        mode: '0644'

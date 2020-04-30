@@ -1,0 +1,12 @@
+---
+- name: "kube-controller-manager.service"
+  hosts: masters
+  become: yes
+  tasks:
+    - name: "Copy kube-controller-manager.service"
+      copy:
+        src: /home/chris/Documents/kubeadm/kthw/kube-controller-manager.service
+        dest: /etc/systemd/system/kube-controller-manager.service
+        owner: root
+        group: root
+        mode: '0644'

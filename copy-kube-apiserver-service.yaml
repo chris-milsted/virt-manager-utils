@@ -1,0 +1,36 @@
+---
+- name: "kube-apiserver-service-1"
+  hosts: master-1.local.com
+  become: yes
+  tasks:
+    - name: "Copy kube-apiserver.service.1"
+      copy:
+        src: /home/chris/Documents/kubeadm/kthw/kube-apiserver.service.1
+        dest: /etc/systemd/system/kube-apiserver.service
+        owner: root
+        group: root
+        mode: '0644'
+
+- name: "kube-apiserver-service-2"
+  hosts: master-2.local.com
+  become: yes
+  tasks:
+    - name: "Copy kube-apiserver.service.2"
+      copy:
+        src: /home/chris/Documents/kubeadm/kthw/kube-apiserver.service.2
+        dest: /etc/systemd/system/kube-apiserver.service
+        owner: root
+        group: root
+        mode: '0644'
+
+- name: "kube-apiserver-service-3"
+  hosts: master-3.local.com
+  become: yes
+  tasks:
+    - name: "Copy kube-apiserver.service.3"
+      copy:
+        src: /home/chris/Documents/kubeadm/kthw/kube-apiserver.service.3
+        dest: /etc/systemd/system/kube-apiserver.service
+        owner: root
+        group: root
+        mode: '0644'

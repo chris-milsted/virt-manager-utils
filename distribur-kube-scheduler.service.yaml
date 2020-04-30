@@ -1,0 +1,12 @@
+---
+- name: "kube-scheduler.service"
+  hosts: masters
+  become: yes
+  tasks:
+    - name: "Copy kube-scheduler.service"
+      copy:
+        src: /home/chris/Documents/kubeadm/kthw/kube-scheduler.service
+        dest: /etc/systemd/system/kube-scheduler.service
+        owner: root
+        group: root
+        mode: '0644'
