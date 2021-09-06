@@ -1,0 +1,9 @@
+<network>
+  <name>networka</name>
+  <domain name="networka"/>
+  <ip address="172.16.100.1" netmask="255.255.255.0">
+    <dhcp>
+      <range start="172.16.100.128" end="172.16.100.254"/>
+    </dhcp>
+  </ip>
+</network>
