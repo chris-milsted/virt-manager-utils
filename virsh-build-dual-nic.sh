@@ -72,11 +72,13 @@ sudo systemctl enable --now kubelet
 
 ######
 
+sudo systemctl stop swap-create@zram0
+sudo touch /etc/systemd/zram-generator.conf
 reboot
 
 #####
 
-sudo ip route add default via 10.10.100.145 dev enp2s0
-sudo ip route add 0.0.0.0 via 172.16.100.201 dev enp1s0
+sudo ip route add 0.0.0.0 via 10.10.100.145 dev enp2s0 metric 105
+sudo ip route add 0.0.0.0 via 172.16.100.201 dev enp1s0 metric 106
 
 kubeadm init
