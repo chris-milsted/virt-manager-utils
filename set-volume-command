@@ -1,0 +1,1 @@
+pactl set-source-volume "alsa_input.usb-Sennheiser_Sennheiser_SC260_A001210191900101-00.analog-stereo" 65536
